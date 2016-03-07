@@ -1,5 +1,6 @@
 package com.gandivainc.myappporfolio;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -52,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void launchSpotifySteamer(View view) {
-        Toast.makeText(this,"This button will launch SPOTIFY STEAMER",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"This button will launch SPOTIFY STEAMER",Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this,MovieListActivity.class);
+        startActivity(intent);
     }
     public void launchScoresApp(View view) {
         Toast.makeText(this,"This button will launch SCORES APP",Toast.LENGTH_SHORT).show();
