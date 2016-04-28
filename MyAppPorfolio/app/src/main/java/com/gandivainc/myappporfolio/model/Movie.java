@@ -1,16 +1,26 @@
 package com.gandivainc.myappporfolio.model;
 
+import android.net.Uri;
+
 import java.util.List;
 
 /**
+ * This class represents Movie domain object.
  * Created by ea8b26s on 02/23/2016.
  */
-public class Movie implements IModel{
+public class Movie implements IModel {
 
-    public static String MODEL_NAME = "MOVIE";
-    public static final String API_KEY = "";
-    public static final String URL_MOVIE_LIST = "https://api.themoviedb.org/3/discover/movie?api_key="+API_KEY+"&sort_by=";
+    public static final String API_KEY = "951dbb17b4e3480364e9232c49c57f1c";
+    public static final String YOUTUBE_API_KEY = "AIzaSyBvi44ajDJ9ylyCtfqvM2RHePg61v5d6ec";
     public static final String URL_BASE_MOVIE_POSTER = "http://image.tmdb.org/t/p/w185";
+    public static final String COLUMN_MOVIE_ID = "MOVIE_ID";
+    public static final String COLUMN_TITLE = "TITLE";
+    public static final String COLUMN_RELEASE_DATE = "RELEASE_DATE";
+    public static final String COLUMN_OVERVIEW = "OVERVIEW";
+    public static final String COLUMN_POSTER_PATH = "POSTER_PATH";
+    public static final String COLUMN_VOTE_AVERAGE = "VOTE_AVERAGE";
+    public static final String FAVOURITE_MOVIE_TABLENAME = "FAVOURITE_MOVIE";
+    public static String MODEL_NAME = "MOVIE";
     private String poster_path;
     private boolean adult;
     private String overview;
@@ -26,6 +36,30 @@ public class Movie implements IModel{
     private boolean video;
     private String vote_average;
 
+    public static String getMovieListURL(int page, String sortedBy) {
+        Uri.Builder builder = new Uri.Builder();
+        builder.scheme("https")
+                .authority("api.themoviedb.org")
+                .appendPath("3")
+                .appendPath("discover")
+                .appendPath("movie")
+                .appendQueryParameter("api_key", API_KEY)
+                .appendQueryParameter("sort_by", sortedBy)
+                .appendQueryParameter("page", "" + page);
+        return builder.build().toString();
+    }
+
+    public static String getMovieVideoURL(int id) {
+        Uri.Builder builder = new Uri.Builder();
+        builder.scheme("http")
+                .authority("api.themoviedb.org")
+                .appendPath("3")
+                .appendPath("movie")
+                .appendPath("" + id)
+                .appendPath("videos")
+                .appendQueryParameter("api_key", API_KEY);
+        return builder.build().toString();
+    }
 
     public String getPoster_path() {
         return poster_path;

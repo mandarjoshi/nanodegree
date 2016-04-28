@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="TRAILER_OBJECT" type="id">TRAILER_OBJECT</item>
+    <item name="MOVIE_OBJECT" type="id">MOVIE_OBJECT</item>
+</resources>

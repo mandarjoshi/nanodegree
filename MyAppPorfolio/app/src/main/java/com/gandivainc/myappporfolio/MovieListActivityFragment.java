@@ -7,7 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * A placeholder fragment containing a simple view.
+ * This fragment is used withing MovieListAcitivity for Phone view
+ * and Tablet view (Master/Details)
  */
 public class MovieListActivityFragment extends Fragment {
 
@@ -17,7 +18,7 @@ public class MovieListActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_movie_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_movie_list, container, false);
         return view;
     }
 }

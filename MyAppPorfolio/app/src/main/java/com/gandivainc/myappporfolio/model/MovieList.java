@@ -3,6 +3,7 @@ package com.gandivainc.myappporfolio.model;
 import java.util.List;
 
 /**
+ * This class represents MovieList domain object mapping return by service in JSON format.
  * Created by ea8b26s on 02/23/2016.
  */
 public class MovieList {

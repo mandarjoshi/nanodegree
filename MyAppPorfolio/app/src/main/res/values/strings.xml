@@ -28,10 +28,12 @@
     <string-array name="pref_movie_sort_by_title">
         <item>Most Popular</item>
         <item>Highest Rated</item>
+        <item>Favourites</item>
     </string-array>
     <string-array name="pref_movie_sort_by_values">
         <item>popularity.desc</item>
         <item>vote_average.desc</item>
+        <item>favourites</item>
     </string-array>
 
     <!-- Example settings for Data & Sync -->
@@ -68,5 +70,9 @@
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="pref_title_movie_sort">Sort Movies</string>
     <string name="movie_sort_by">movie_sort_by</string>
-    <string name="title_activity_movie_details">MovieDetails</string>
+    <string name="title_activity_movie_details">Movie Details</string>
+    <string name="review_header">Reviews</string>
+    <string name="trailer">Trailer</string>
+    <string name="no_data_to_display">There are no movies marked as favourite.</string>
+    <string name="no_movie_selected">Please select movie for details.</string>
 </resources>

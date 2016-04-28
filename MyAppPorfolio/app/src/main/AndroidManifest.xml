@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gandivainc.myappporfolio">
 
+    <supports-screens android:requiresSmallestWidthDp="600" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -23,6 +25,7 @@
         <activity
             android:name=".MovieListActivity"
             android:label="@string/title_activity_movie_list"
+            android:launchMode="singleTop"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
