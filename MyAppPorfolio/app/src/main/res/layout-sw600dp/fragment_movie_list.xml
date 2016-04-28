@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.gandivainc.myappporfolio.MovieListActivityFragment"
+    tools:showIn="@layout/activity_movie_list">
+
+    <TextView
+        android:id="@+id/movie_list_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/no_data_to_display" />
+
+    <LinearLayout
+        android:id="@+id/prgBarTop"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.05"
+        android:background="#000000"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.1"
+            android:background="#FFFFFF"
+            android:onClick="loadPrevPage"
+            android:text="Previous"
+            android:textSize="12dp" />
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/movie_list_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.95"
+        android:numColumns="3"></GridView>
+
+    <LinearLayout
+        android:id="@+id/prgBarBottom"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.05"
+        android:background="#000000"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.1"
+            android:background="#FFFFFF"
+            android:onClick="loadNextPage"
+            android:text="Next"
+            android:textSize="12dp" />
+    </LinearLayout>
+</LinearLayout>

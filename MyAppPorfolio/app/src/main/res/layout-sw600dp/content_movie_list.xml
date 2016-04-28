@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/frags"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <fragment
+        android:id="@+id/movie_list_fragment"
+        android:name="com.gandivainc.myappporfolio.MovieListActivityFragment"
+        class="com.gandivainc.myappporfolio.MovieListActivityFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5" />
+
+    <fragment
+        android:id="@+id/movie_details_fragment"
+        android:name="com.gandivainc.myappporfolio.MovieDetailsActivityFragment"
+        class="com.gandivainc.myappporfolio.MovieDetailsActivityFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5" />
+
+</LinearLayout>
