@@ -22,6 +22,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * This fragment is used withing MovieDetailsAcitivity for Phone view
  * and within MovieListActivity for Tablet view (Master/Details)
@@ -30,6 +33,15 @@ public class MovieDetailsActivityFragment extends Fragment implements YouTubeThu
 
     //movie details fragment view
     View view;
+
+    @BindView(R.id.movie_not_selected) TextView movieNotSelectedView;
+    @BindView(R.id.movie_details_title) TextView title;
+    @BindView(R.id.movie_details_synopsis) TextView synopsis;
+    @BindView(R.id.movie_details_voteaverage) TextView voteAverage;
+    @BindView(R.id.movie_details_poster) ImageView posterView;
+    @BindView(R.id.movie_details_review_header) Button reviewButton;
+    @BindView(R.id.movie_details_trailer) Button trailerButton;
+    @BindView(R.id.movie_details_favourite) Button favouriteButton;
 
     //movie trailer
     private YouTubeThumbnailLoader youTubeThumbnailLoader;
@@ -43,7 +55,7 @@ public class MovieDetailsActivityFragment extends Fragment implements YouTubeThu
                              Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_movie_details, container, false);
-        TextView movieNotSelectedView = (TextView) view.findViewById(R.id.movie_not_selected);
+        ButterKnife.bind(this,view);
 
         //check if movie selected in List view
         if (getActivity().getIntent().getExtras() != null) {
@@ -69,16 +81,7 @@ public class MovieDetailsActivityFragment extends Fragment implements YouTubeThu
 
         //take care of scenario when change filter from favourite movie to any other
         //and no movie was set as favourite. no need to show "movie_not_selected"
-        TextView movieNotSelectedView = (TextView) view.findViewById(R.id.movie_not_selected);
         movieNotSelectedView.setVisibility(View.GONE);
-
-        TextView title = (TextView) view.findViewById(R.id.movie_details_title);
-        TextView synopsis = (TextView) view.findViewById(R.id.movie_details_synopsis);
-        TextView voteAverage = (TextView) view.findViewById(R.id.movie_details_voteaverage);
-        ImageView posterView = (ImageView) view.findViewById(R.id.movie_details_poster);
-        Button reviewButton = (Button) view.findViewById(R.id.movie_details_review_header);
-        Button trailerButton = (Button) view.findViewById(R.id.movie_details_trailer);
-
 
         title.setText(movie.getTitle() + "   (" + movie.getRelease_date() + ")");
 
@@ -105,7 +108,7 @@ public class MovieDetailsActivityFragment extends Fragment implements YouTubeThu
         trailerButton.setTag(movie);
 
         MovieProvider movieDAO = new MovieProvider(this.getContext());
-        Button favouriteButton = (Button) view.findViewById(R.id.movie_details_favourite);
+
         favouriteButton.setTag(movie);
 
         //Favourite button text toggle

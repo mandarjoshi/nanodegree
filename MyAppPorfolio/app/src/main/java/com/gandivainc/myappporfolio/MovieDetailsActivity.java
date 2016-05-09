@@ -1,26 +1,25 @@
 package com.gandivainc.myappporfolio;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
-import com.gandivainc.myappporfolio.model.Movie;
-import com.gandivainc.myappporfolio.model.MovieVideo;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * This activity is responsible for showing details for selected movie.
  */
 public class MovieDetailsActivity extends MovieMultiViewActivity {
 
+    @BindView(R.id.toolbar) Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         //now set custom
         //moved share link to trailer pop up dialog since it is more appropriate there
         //I will delete this code once my change is accepted

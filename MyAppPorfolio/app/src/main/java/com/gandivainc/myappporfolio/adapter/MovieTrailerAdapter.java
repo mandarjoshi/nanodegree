@@ -20,6 +20,9 @@ import com.google.android.youtube.player.YouTubeThumbnailView;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * This class is responsible for populating trailers for selected movie.
  * Created by ea8b26s on 04/17/2016.
@@ -96,16 +99,14 @@ public class MovieTrailerAdapter extends RecyclerView.Adapter<MovieTrailerAdapte
 
     public class VideoInfoHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        protected RelativeLayout relativeLayoutOverYouTubeThumbnailView;
-        protected ImageView playButton;
-        YouTubeThumbnailView youTubeThumbnailView;
+        @BindView(R.id.relativeLayout_over_youtube_thumbnail) RelativeLayout relativeLayoutOverYouTubeThumbnailView;
+        @BindView(R.id.btnYoutube_player) ImageView playButton;
+        @BindView(R.id.youtube_thumbnail) YouTubeThumbnailView youTubeThumbnailView;
 
         public VideoInfoHolder(View itemView) {
             super(itemView);
-            playButton = (ImageView) itemView.findViewById(R.id.btnYoutube_player);
+            ButterKnife.bind(this,itemView);
             playButton.setOnClickListener(this);
-            relativeLayoutOverYouTubeThumbnailView = (RelativeLayout) itemView.findViewById(R.id.relativeLayout_over_youtube_thumbnail);
-            youTubeThumbnailView = (YouTubeThumbnailView) itemView.findViewById(R.id.youtube_thumbnail);
         }
 
         @Override

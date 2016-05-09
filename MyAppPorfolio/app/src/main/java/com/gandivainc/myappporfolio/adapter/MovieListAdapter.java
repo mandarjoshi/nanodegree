@@ -16,6 +16,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * This class is responsible for populating movie list.
  * Created by ea8b26s on 02/20/2016.
@@ -31,21 +34,25 @@ public class MovieListAdapter extends ArrayAdapter<Movie> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View view, ViewGroup parent) {
 
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.movie_list_item, parent, false);
+        ViewHolder holder;
+        if(view != null)
+        {
+            holder = (ViewHolder) view.getTag();
         }
-
-        View view = convertView;
+        else{
+            view = LayoutInflater.from(getContext()).inflate(R.layout.movie_list_item, parent, false);
+            holder = new ViewHolder(view);
+            view.setTag(holder);
+        }
 
         Movie movie = (Movie) getItem(position);
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.movie_list_item_image);
-        imageView.setTag(movie);
+        holder.imageView.setTag(movie);
         String imageUrl = Movie.URL_BASE_MOVIE_POSTER + movie.getPoster_path();
-        Picasso.with(getContext()).load(imageUrl).into(imageView);
-        imageView.setOnClickListener(new View.OnClickListener() {
+        Picasso.with(getContext()).load(imageUrl).into(holder.imageView);
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Movie selectedMovie = (Movie) view.getTag();
@@ -66,6 +73,14 @@ public class MovieListAdapter extends ArrayAdapter<Movie> {
             fragment.populateView(movie);
         }
 
-        return convertView;
+        return view;
+    }
+
+    static class ViewHolder {
+        @BindView(R.id.movie_list_item_image) ImageView imageView;
+        public ViewHolder(View view)
+        {
+            ButterKnife.bind(this,view);
+        }
     }
 }

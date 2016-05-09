@@ -12,6 +12,9 @@ import com.gandivainc.myappporfolio.model.MovieReview;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * This class is responsible for populating reviews for selected movie.
  * Created by ea8b26s on 03/08/2016.
@@ -48,15 +51,13 @@ public class MovieReviewListAdapter extends RecyclerView.Adapter<MovieReviewList
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView header;
-        public TextView author;
-        public TextView content;
+        @BindView(R.id.movie_details_review_item_author_header ) TextView header;
+        @BindView(R.id.movie_details_review_item_author) TextView author;
+        @BindView(R.id.movie_details_review_item_content) TextView content;
 
         public ViewHolder(View view) {
             super(view);
-            header = (TextView) view.findViewById(R.id.movie_details_review_item_author_header);
-            content = (TextView) view.findViewById(R.id.movie_details_review_item_content);
-            author = (TextView) view.findViewById(R.id.movie_details_review_item_author);
+            ButterKnife.bind(this,view);
         }
     }
 }

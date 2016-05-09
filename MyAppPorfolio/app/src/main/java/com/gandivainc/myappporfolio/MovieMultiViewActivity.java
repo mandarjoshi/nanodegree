@@ -57,14 +57,14 @@ public class MovieMultiViewActivity extends AppCompatActivity {
         MovieProvider movieDAO = new MovieProvider(this);
         Movie movie = (Movie) view.getTag();
 
-        Button reviewButton = (Button) findViewById(R.id.movie_details_favourite);
+        Button favouriteButton = (Button) findViewById(R.id.movie_details_favourite);
 
         //mark Favourite toggle
         if (movieDAO.isMovieFavourite(movie.getId())) {
             //movie already marked as favourite so remove from favourite list
             if (movieDAO.removeFavouriteMovie(movie.getId())) {
                 Toast.makeText(this, "Movie removed from favourites", Toast.LENGTH_SHORT).show();
-                reviewButton.setText("Add Favourites");
+                favouriteButton.setText("Add Favourites");
                 favouriteStatusChanged = true;
             } else {
                 Toast.makeText(this, "Couldn't removed movie from favourites", Toast.LENGTH_SHORT).show();
@@ -73,7 +73,7 @@ public class MovieMultiViewActivity extends AppCompatActivity {
             //mark movie as favourite
             if (movieDAO.addFavouriteMovie(movie)) {
                 Toast.makeText(this, "Movie added to favourites", Toast.LENGTH_SHORT).show();
-                reviewButton.setText("Remove Favourites");
+                favouriteButton.setText("Remove Favourites");
                 favouriteStatusChanged = true;
             } else {
                 Toast.makeText(this, "Couldn't add Movie to favourites", Toast.LENGTH_SHORT).show();

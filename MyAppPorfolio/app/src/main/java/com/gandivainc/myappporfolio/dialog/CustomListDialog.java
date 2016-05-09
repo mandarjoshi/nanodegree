@@ -12,34 +12,32 @@ import android.widget.ImageView;
 import com.gandivainc.myappporfolio.R;
 import com.gandivainc.myappporfolio.adapter.MovieTrailerAdapter;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * This is common implementation for popup dialog with list.
  * Created by ea8b26s on 04/16/2016.
  */
 public class CustomListDialog extends Dialog {
 
-    RecyclerView listView;
     RecyclerView.Adapter adapter;
-    ImageView shareImage;
     Context context;
+    @BindView(R.id.custom_list_popup_list) RecyclerView listView;
+    @BindView(R.id.custom_list_popup_share) ImageView shareImage;
+    @BindView(R.id.custom_list_popup_close) Button closeButton;
 
     public CustomListDialog(Context context, RecyclerView.Adapter adapter) {
         super(context);
         this.context = context;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.custom_list_dialog);
-
+        ButterKnife.bind(this);
         this.adapter = adapter;
 
-        listView = (RecyclerView) findViewById(R.id.custom_list_popup_list);
         listView.setLayoutManager(new LinearLayoutManager(context));
         listView.setAdapter(adapter);
-
-        shareImage = (ImageView) findViewById(R.id.custom_list_popup_share);
         shareImage.setVisibility(View.GONE);
-
-
-        Button closeButton = (Button) findViewById(R.id.custom_list_popup_close);
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -28,38 +28,37 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MovieListActivity extends MovieMultiViewActivity {
 
     private int page = 1;
-    private GridView gridView;
     private MovieListAdapter adapter;
     private boolean loading = false;
-    private LinearLayout bottomBar;
-    private LinearLayout topBar;
     private ProgressDialog progress;
     private String sortBy;
-    private TextView noData;
+    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.movie_list_no_data) TextView noData;
+    @BindView(R.id.movie_list_gridview) GridView gridView;
+    @BindView(R.id.prgBarBottom) LinearLayout bottomBar;
+    @BindView(R.id.prgBarTop) LinearLayout topBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_list);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
+
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        noData = (TextView) findViewById(R.id.movie_list_no_data);
 
         progress = new ProgressDialog(this);
         progress.setMessage("loading...");
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
 
-        gridView = (GridView) findViewById(R.id.movie_list_gridview);
-        bottomBar = (LinearLayout) findViewById(R.id.prgBarBottom);
         bottomBar.setVisibility(View.GONE);
-        topBar = (LinearLayout) findViewById(R.id.prgBarTop);
         topBar.setVisibility(View.GONE);
 
         //Support Phone view and Tablet view (Master/Details)
